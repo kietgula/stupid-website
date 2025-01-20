@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Case Text Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        textarea {
+            width: 90%;
+            max-width: 500px;
+            height: 120px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #regenerateButton {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function generateRandomCaseText() {
+            const inputText = document.getElementById('inputText').value;
+            const randomCaseText = inputText
+                .split('')
+                .map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase())
+                .join('');
+            document.getElementById('output').textContent = randomCaseText;
+            document.getElementById('regenerateButton').style.display = 'inline-block';
+        }
+
+        function regenerateRandomCaseText() {
+            const currentText = document.getElementById('output').textContent;
+            const randomCaseText = currentText
+                .split('')
+                .map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase())
+                .join('');
+            document.getElementById('output').textContent = randomCaseText;
+        }
+    </script>
+</head>
+<body>
+    <h1>Random Case Text Generator</h1>
+    <textarea id="inputText" placeholder="Enter your text here..."></textarea><br>
+    <button onclick="generateRandomCaseText()">Generate Text</button>
+    <div id="output"></div>
+    <button id="regenerateButton" onclick="regenerateRandomCaseText()">Regenerate Random Case</button>
+</body>
+</html>
